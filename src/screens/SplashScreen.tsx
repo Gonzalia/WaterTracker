@@ -19,7 +19,7 @@ const SplashScreen = ({ navigation }: Props) => {
         );
 
         navigation.replace(
-          onboardingCompleted === "true" ? "Home" : "Onboarding",
+          onboardingCompleted === "true" ? "Main" : "Onboarding",
         );
       } catch (error) {
         console.log("Error checking onboarding:", error);

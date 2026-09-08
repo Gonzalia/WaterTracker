@@ -3,12 +3,13 @@ import SplashScreen from "../screens/SplashScreen";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import HomeScreen from "../screens/HomeScreen";
 import OnboardingScreen from "../screens/OnboardingScreen";
+import TabNavigator from "./TabNavigator";
 
 // undefined = no params
 export type RootStackParamList = {
   Splash: undefined;
-  Home: undefined;
   Onboarding: undefined;
+  Main: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -24,8 +25,8 @@ const StackNavigator = () => {
           }}
         >
           <Stack.Screen name="Splash" component={SplashScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+          <Stack.Screen name="Main" component={TabNavigator} />
         </Stack.Navigator>
       </SafeAreaView>
     </SafeAreaProvider>

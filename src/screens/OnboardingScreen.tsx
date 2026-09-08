@@ -35,7 +35,7 @@ const OnboardingScreen = ({ navigation }: any) => {
       ["onboardingCompleted", "true"],
     ]);
 
-    navigation.replace("Home");
+    navigation.replace("Main");
   };
 
   const disabled = !name.trim() || !lastName.trim();
