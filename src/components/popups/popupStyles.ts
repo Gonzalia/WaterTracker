@@ -1,0 +1,46 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  backdrop: {
+    flex: 1,
+    backgroundColor: "rgba(0, 10, 22, 0.75)",
+    justifyContent: "center",
+    padding: 20,
+  },
+  card: {
+    width: "100%",
+    maxWidth: 440,
+    maxHeight: "90%",
+    alignSelf: "center",
+    backgroundColor: "#082033",
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: "#315C75",
+    padding: 22,
+  },
+  content: { gap: 18 },
+  title: { color: "#FFFFFF", fontSize: 24, fontWeight: "700" },
+  label: { color: "#D2E5F0", fontSize: 15 },
+  row: { flexDirection: "row", alignItems: "center", gap: 10 },
+  wrap: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+  option: {
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "#315C75",
+    backgroundColor: "#0C2437",
+  },
+  selected: { borderColor: "#A9E4FF", backgroundColor: "#165276" },
+  text: { color: "#FFFFFF", fontSize: 15, textAlign: "center" },
+  primary: {
+    backgroundColor: "#48BFF5",
+    borderRadius: 18,
+    padding: 16,
+    alignItems: "center",
+  },
+  primaryText: { color: "#082033", fontWeight: "700", fontSize: 16 },
+  cancel: { padding: 12, alignItems: "center" },
+  disabled: { opacity: 0.4 },
+  error: { color: "#FFB4AB", fontSize: 14 },
+});
