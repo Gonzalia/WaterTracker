@@ -17,6 +17,7 @@ function setup(initial = []) {
     },
     getAllKeys: async () => [...data.keys()],
     multiGet: async (keys) => keys.map((key) => [key, data.get(key) ?? null]),
+    multiRemove: async (keys) => keys.forEach((key) => data.delete(key)),
   };
   const modules = {};
   function load(name) {
@@ -65,6 +66,24 @@ test("week includes missing days; lifetime total includes dates outside the peri
   assert.equal(result.average, 5000 / 7);
   assert.equal(result.total, 6000);
   assert.equal(result.points[1].amount, 0);
+});
+
+test("account deletion removes profile and all history after pending writes", async () => {
+  const { water, data } = setup([
+    ["userName", "Ana"],
+    ["userLastName", "Test"],
+    ["dailyGoal", "2500"],
+    ["onboardingCompleted", "true"],
+    ["waterIntake", "500"],
+    ["waterIntake:2020-01-01", "1000"],
+    ["unrelated", "keep"],
+  ]);
+  await Promise.all([water.addWater(250), water.deleteLocalAccount()]);
+  assert.deepEqual([...data.entries()], [["unrelated", "keep"]]);
+  assert.equal(await water.getWaterIntake(), 0);
+  const history = await water.getWaterHistory();
+  assert.equal(history.entries.length, 0);
+  assert.equal(history.goal, 2000);
 });
 
 test("month counts only elapsed days, including today", () => {
